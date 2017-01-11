@@ -1,0 +1,6 @@
+库名
+wangshop
+
+需要在mysql中新建账号
+kwc5132
+kwc5132
