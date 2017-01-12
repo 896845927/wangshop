@@ -63,7 +63,7 @@ class Auth
             $data = request()->post();
             // 验证
             $validate = Loader::validate('Users');
-            if (!$validate->scene('login')->check($data)) fail($validate->getError());
+            if (!$validate->scene('change')->check($data)) fail($validate->getError());
             $user = UserModel::where([
                 'id'=>session('user.id'),
                 'pass'=>encrypt($data['pass'])
