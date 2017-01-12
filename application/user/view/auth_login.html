@@ -33,10 +33,10 @@
             <form method="post" action="/user/auth/login">
               <h1>Login Form</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" name="login" class="form-control" placeholder="Login Name" required="required" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" name="pass" class="form-control" placeholder="Password" required="required" />
               </div>
               <div>
                 <button class="btn btn-default submit" type="submit">Log in</button>
@@ -62,13 +62,16 @@
             <form method="post" action="/user/auth/register">
               <h1>Create Account</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" name="name" class="form-control" placeholder="Username" required="required" />
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Email" required="" />
+                <input type="text" name="login" class="form-control" placeholder="Login Name" required="required" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" name="pass" class="form-control" placeholder="Password" required="required" />
+              </div>
+              <div>
+                <input type="password" name="repass" class="form-control" placeholder="Confirm Password" required="required" />
               </div>
               <div>
                 <button class="btn btn-default submit" type="submit">Register</button>
