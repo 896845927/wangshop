@@ -8,10 +8,10 @@
 
 namespace app\user\controller;
 
-use app\user\model\User;
+use app\common\model\User;
 use think\Loader;
 use think\Session;
-use app\user\model\User as UserModel;
+use app\common\model\User as UserModel;
 
 class Auth
 {
@@ -69,12 +69,12 @@ class Auth
                 'pass'=>encrypt($data['pass'])
             ])->setField('pass', encrypt($data['new_pass']));
             if($user){
-                win('login success', url('/user/auth/index'));
+                win('Password change success', url('/user/auth/index'));
             }else{
-                fail('login fail');
+                fail('Old Password Wrong!!!');
             }
         }
-        return view('login');
+        return view('auth_change_pass');
     }
 
     public function logout(){
@@ -86,7 +86,7 @@ class Auth
     {
         $user = User::find(Session::get('user.id'));
         $address = $user->address()->where(['is_default'=>1])->find();
-        $notice = $address?null:"You don't have shipping address.Please enter a shipping address.";
+        $notice = $address?null:"You don't have set default address.Please setting.";
         return view('index',[
             'notice'=>$notice,
             'address'=>$address

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\user\model;
+namespace app\common\model;
 
 use think\Model;
 
@@ -12,5 +12,9 @@ class User extends Model
     
     public function address(){
         return $this->hasMany('Address','user_id');
+    }
+
+    public function order(){
+        return $this->hasMany('Order','user_id');
     }
 }

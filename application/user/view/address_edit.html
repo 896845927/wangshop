@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<form action="/user/address/update" method="post">
+    <div>
+        name:<input type="text" name="name" value="{$address.name}">
+    </div>
+    <div>
+        phone:<input type="text" name="phone" value="{$address.phone}">
+    </div>
+    <div>
+        <input type="radio" name="gender" value="1" {if condition="$address['gender'] == 'male'"}checked{/if}>Male
+        <input type="radio" name="gender" value="2" {if condition="$address['gender'] == 'female'"}checked{/if}>Female
+    </div>
+    <div>
+        <textarea name="address">{$address.address}</textarea>
+    </div>
+    <div>
+        default:<input type="checkbox" name="is_default" value="1" {if condition="$address['is_default']==1"}checked{/if}>
+    </div>
+        <input type="hidden" name="id" value="{$address['id']}">
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+</body>
+</html>

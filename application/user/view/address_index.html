@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+</head>
+<body>
+<table>
+    {volist name="address" id="item" empty="No Address" }
+        <tr>
+            <td>{$item.name}</td>
+            <td>{$item.phone}</td>
+            <td>{$item.address}</td>
+            <td>{$item.is_default}</td>
+            <td><a href="{:url('/user/address/delete',['id'=>$item.id])}">删除</a></td>
+            <td><a href="{:url('/user/address/edit',['id'=>$item.id])}">编辑</a></td>
+        </tr>
+    {/volist}
+</table>
+
+</body>
+</html>
