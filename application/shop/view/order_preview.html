@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Preview</title>
+</head>
+<body>
+<form action="{:url('shop/order/create')}" method="post">
+    <table>
+        {volist name="products" id="item" empty="No Products" }
+        <tr class="code-product-tr">
+            <td class="code-product-name">{$item.name}</td>
+            <td class="code-product-price">{$item.price}</td>
+            <td >{$item.num}</td>
+        </tr>
+        {/volist}
+        <tr>
+            <td>Total</td>
+            <td></td>
+            <td>{$total}</td>
+        </tr>
+        <select name="address_id">
+            {volist name="address" id="item" }
+            <option value="{$item.id}">{$item.address}</option>
+            {/volist}
+        </select>
+    </table>
+    <button type="submit">支付</button>
+</form>
+
+</body>
+</html>

@@ -16,7 +16,18 @@ class Order extends Controller
      */
     public function index()
     {
-        $orders = User::find(session('user.id'))->order()->select();
+        $orders = User::find(session('user.id'))->order()
+            ->field([
+                'id',
+                'order_num',
+                'total',
+                'info',
+                'create_time',
+                'status',
+            ])
+            ->order(['create_time'=>'desc'])
+            ->select();
+
         return view('order_index',['orders'=>$orders]);
     }
 

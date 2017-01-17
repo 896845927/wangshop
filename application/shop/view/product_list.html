@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+</head>
+<body>
+<table>
+    {volist name="products" id="item" empty="No Products" }
+    <tr class="code-product-tr">
+        <td class="code-product-id">{$item.id}</td>
+        <td class="code-product-name">{$item.name}</td>
+        <td class="code-product-price">{$item.price}</td>
+        <td class="code-product-img"><img src="{$item.pic_url}"></td>
+        <td class="code-product-add" data-id="{$item.id}">Add Cart</td>
+    </tr>
+    {/volist}
+</table>
+<div>
+    <table class="code-cart">
+        <tr class="code-cart-item">
+            <td class="code-cart-id" data-id="1">1</td>
+            <td class="code-cart-name">汉堡</td>
+            <td class="code-cart-price">5.55</td>
+            <td class="code-cart-add"><button>+</button></td>
+            <td class="code-cart-num">0</td>
+            <td class="code-cart-subtract"><button>-</button></td>
+        </tr>
+        <tr class="code-cart-item">
+            <td class="code-cart-id" data-id="2">1</td>
+            <td class="code-cart-name">可乐</td>
+            <td class="code-cart-price">3.52</td>
+            <td class="code-cart-add"><button>+</button></td>
+            <td class="code-cart-num">0</td>
+            <td class="code-cart-subtract"><button>-</button></td>
+        </tr>
+    </table>
+    <p><button id="clear">清空</button></p>
+    <p><a href="{:url('shop/order/preview')}"><button id="pay">结算</button></a></p>
+</div>
+<!-- jQuery -->
+<script src="__PUBLIC__/vendors/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.code-product-add').click(function () {
+            var id = $(this).data('id');
+            $.ajax({
+                type: "POST",
+                url: "{:url('shop/cart/add')}",
+                data: {'id':id},
+                dataType: "json",
+                success: function(data){
+                    console.log(data);
+                }
+            });
+        });
+
+        $('.code-cart-add').click(function () {
+            var id = $(this).parents('.code-cart-item').find('.code-cart-id').data('id');
+            var $num = $(this).parents('.code-cart-item').find('.code-cart-num');
+            var $item = $(this).parents('.code-cart-item');
+            $.ajax({
+                type: "POST",
+                url: "{:url('shop/cart/add')}",
+                data: {id:id},
+                dataType: "json",
+                success: function(data){
+                    if (data.num){
+                        $num.text(data.num);
+                    }else {
+                        $item.remove();
+                    }
+                }
+            });
+        })
+
+        //减
+        $('.code-cart-subtract').click(function () {
+            var id = $(this).parents('.code-cart-item').find('.code-cart-id').data('id');
+            var $num = $(this).parents('.code-cart-item').find('.code-cart-num');
+            var $item = $(this).parents('.code-cart-item');
+            $.ajax({
+                type: "POST",
+                url: "{:url('shop/cart/subtract')}",
+                data: {id:id},
+                dataType: "json",
+                success: function(data){
+                    console.log(data);
+                    if (data.num){
+                        $num.text(data.num);
+                    }else {
+                        $item.remove();
+                    }
+                }
+            });
+        })
+
+        //清空
+        $('#clear').click(function () {
+            $.ajax({
+                type: "POST",
+                url: "{:url('shop/cart/clear')}",
+                dataType: "json",
+                success: function(data){
+                    if (data){
+                        $('.code-cart-item').remove();
+                    }
+                }
+            });
+        })
+
+        //结算
+        $('#pay').click(function () {
+            $.ajax({
+                type: "POST",
+                url: "{:url('shop/order/preview')}",
+                dataType: "json",
+                success: function(data){
+                    if (data){
+                        $('.code-cart-item').remove();
+                    }
+                }
+            });
+        })
+    });
+</script>
+</body>
+</html>

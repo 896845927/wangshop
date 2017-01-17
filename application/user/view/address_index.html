@@ -1,22 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Order</title>
-</head>
-<body>
-<table>
-    {volist name="address" id="item" empty="No Address" }
-        <tr>
-            <td>{$item.name}</td>
-            <td>{$item.phone}</td>
-            <td>{$item.address}</td>
-            <td>{$item.is_default}</td>
-            <td><a href="{:url('/user/address/delete',['id'=>$item.id])}">删除</a></td>
-            <td><a href="{:url('/user/address/edit',['id'=>$item.id])}">编辑</a></td>
-        </tr>
-    {/volist}
-</table>
 
+{include file="public/header"}
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        {include file="public/left"}
+        {include file="public/top"}
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Address List</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <!-- start project list -->
+                                <table class="table table-striped projects">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 1%">#</th>
+                                        <th style="width: 20%">Name</th>
+                                        <th>Phone</th>
+                                        <th>Address</th>
+                                        <th>Status</th>
+                                        <th style="width: 20%">#Edit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {volist name="address" id="item" empty="No Address" }
+                                    <tr>
+                                        <td>#</td>
+                                        <td><a>{$item.name}</a></td>
+                                        <td>{$item.phone}</td>
+                                        <td class="project_progress">{$item.address}</td>
+                                        <td>
+                                            {if condition="$item.is_default==1"}
+                                            <button type="button" class="btn btn-success btn-xs">Default</button>
+                                            {/if}
+                                        </td>
+                                        <td>
+                                            <a href="{:url('/user/address/edit',['id'=>$item.id])}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                            <a href="{:url('/user/address/delete',['id'=>$item.id])}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                        </td>
+                                    </tr>
+                                    {/volist}
+                                    </tbody>
+                                </table>
+                                <!-- end project list -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        {include file="public/footer"}
+        <!-- /footer content -->
+    </div>
+</div>
+
+<!-- 页面js部分-->
+<!-- jQuery -->
+<script src="__PUBLIC__/vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="__PUBLIC__/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="__PUBLIC__/vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="__PUBLIC__/vendors/nprogress/nprogress.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="__PUBLIC__/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="__PUBLIC__/js/custom.min.js"></script>
+<!-- 页面js部分-->
 </body>
 </html>
