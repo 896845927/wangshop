@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Chart JS Graph Examples Part 2 | Gentelella Alela! by Colorlib</title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <style>
+      .cart-price{
+        padding-left: 35px;
+      }
+      .cart-button{
+        float: right;
+      }
+      .cart-clear{
+        float: right;
+        padding-right: 25px;
+        cursor: pointer;
+        color: rgba(0, 128, 0, 0.56);
+      }
+      .cart-checkout{
+        color: rgba(255, 0, 0, 0.52);
+        float: right;
+        padding-right: 30px;
+        cursor: pointer;
+      }
+    </style>
+
+  </head>
+
+  <body class="nav-md">
+  <div class="agileits-modal modal fade" id="myModaNotice" tabindex="-1" role="dialog" aria-labelledby="myModaNotice"
+       aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel"><i class="fa fa-bullhorn" aria-hidden="true"></i> Notice</h4>
+        </div>
+        <div class="modal-body modal-body-sub">
+          <h5>输入通知内容</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="container body">
+      <div class="main_container">
+        <!-- top navigation -->
+        <div class="top_nav" style="margin-left: 0px;">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id=""><i class="fa fa-home"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">John Doe
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href=""><i class="fa fa-user pull-right"></i>User Home</a></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                    <span class="badge bg-green"></span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <li>
+                      <div>
+                        <span class="image">商品名称&nbsp;&nbsp;<strong><i class="fa fa-eur"></i>85.55</strong></span>
+                          <span class="cart-button">
+                            <button class="btn btn-xs stop-propagation">+</button>
+                            <span>4</span>
+                            <button class="btn btn-xs stop-propagation">-</button>
+                          </span>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <span class="image">Total:<strong><i class="fa fa-eur"></i>15.55</strong></span>
+                        <span class="cart-checkout stop-propagation">
+                          <strong><i class="fa fa-money"></i>Check Out</strong>
+                        </span>
+                        <span class="cart-clear stop-propagation">
+                          <strong><i class="fa fa-trash"></i>Clear</strong>
+                        </span>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main" style="margin-left: 0px;">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Products <small>Hours of opening 09:00-17:00</small></h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="code-search-content" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" id="code-search" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-3 col-sm-6 col-xs-12 code-product">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><span class="code-product-name">Line Graph</span> <small><i class="fa fa-eur"></i>15.55</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li style="float: right;"><a><i class="fa fa-shopping-cart"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <img style="width: 100%; display: block;" src="images/cropper.jpg" alt="image" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <br />
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer style="margin-left: 0px;">
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+
+    <script>
+      //	商品筛选js
+      $(function () {
+        $('#myModaNotice').modal('show');
+        $(".stop-propagation").click(function(event) {
+          event.stopPropagation();
+        })
+
+        $('#code-search').click(function () {
+          $('.code-product').hide();
+          var re = new RegExp($('#code-search-content').val(),["ig"]);
+          $('.code-product-name').each(function () {
+            if ($(this).text().match(re)){
+              $(this).parents('.code-product').show();
+            }
+          })
+        })
+      })
+    </script>
+
+  </body>
+</html>

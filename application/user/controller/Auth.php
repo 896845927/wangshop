@@ -17,6 +17,10 @@ class Auth
 {
     //同一个方法支持两种请求，get显示登录页，post处理登录操作
     public function login(){
+        //已登录用户,在登录页直接跳转用户主页
+        if (session('user.id')){
+            return redirect(url('/user/auth/index'));
+        }
         //处理post请求
         if (request()->isPost()){
             $data = [
@@ -31,7 +35,8 @@ class Auth
             if($user){
                 session('user.id',$user['id']);
                 session('user.name',$user['name']);
-                win('login success', url('/user/auth/index'));
+                $url = request()->param('redirect')?request()->param('redirect'):url('/user/auth/index');
+                win('login success', $url);
             }else{
                 fail('login fail');
             }
